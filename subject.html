@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <!-- Background video -->
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <!-- Navigation -->
+    <nav class="menu">
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="subjects.html">Subjects</a></li>
+            <li><a href="#" id="logoutBtn">Log Out</a></li>
+            <li><a href="pomodoro.html">Pomodoro</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Subject content -->
+    <div class="subject-container">
+        <h1 id="subjectTitle">Loading...</h1>
+
+        <h2>Tasks</h2>
+        <input id="taskInput" type="text" placeholder="Add a new task">
+        <button id="addTaskBtn">Add Task</button>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDKCNP1aPfmWL0AXTIOXi1T2FGt_8-sps8",
+            authDomain: "revision-app-eb82c.firebaseapp.com",
+            projectId: "revision-app-eb82c"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="subject.js"></script>
+
+</body>
+</html>

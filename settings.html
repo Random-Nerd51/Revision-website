@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="theme.css">
+</head>
+
+<body class="page-settings">
+
+    <!-- Navigation -->
+    <nav class="menu">
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="subjects.html">Subjects</a></li>
+            <li><a href="pomodoro.html">Pomodoro</a></li>
+            <li><a href="#" id="logoutBtn">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Settings Wrapper -->
+    <div class="settings-container">
+
+        <h1>Settings</h1>
+
+        <!-- LIGHT / DARK MODE -->
+        <section class="settings-section">
+            <h2>Light / Dark Mode</h2>
+
+            <label class="theme-toggle">
+                <input type="checkbox" id="themeSwitch">
+                <span class="slider"></span>
+            </label>
+
+            <p id="themeLabel">Light Mode</p>
+        </section>
+
+        <!-- VIDEO THEME -->
+        <section class="settings-section">
+            <h2>Video Theme</h2>
+
+            <select id="themeSelect">
+                <option value="theme-default">Plain / Default</option>
+                <option value="theme-forest">Nature Vibes</option>
+                <option value="theme-city">City Life</option>
+                <option value="theme-casual">Casual Work</option>
+            </select>
+        </section>
+
+        <!-- FONT SIZE -->
+        <section class="settings-section">
+            <h2>Font Size</h2>
+
+            <input type="range" id="fontSizeSlider" min="12" max="26" value="16">
+            <p id="fontSizeLabel">Font size: 16px</p>
+        </section>
+
+        <!-- ACCOUNT -->
+        <section class="settings-section">
+            <h2>Account</h2>
+
+            <!-- CHANGE PASSWORD BUTTON -->
+            <button id="changePasswordBtn">Change Password</button>
+
+            <!-- PASSWORD MODAL -->
+            <div id="passwordModal" class="modal">
+                <div class="modal-content">
+                    <h2>Change Password</h2>
+
+                    <input type="password" id="currentPassword" placeholder="Current password">
+                    <input type="password" id="newPassword" placeholder="New password">
+                    <input type="password" id="confirmPassword" placeholder="Confirm new password">
+
+                    <button id="submitPasswordChange">Update Password</button>
+                    <button id="closeModal" class="danger">Cancel</button>
+                </div>
+            </div>
+
+            <!-- DELETE ACCOUNT -->
+            <button id="deleteAccountBtn" class="danger">Delete Account</button>
+        </section>
+
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDKCNP1aPfmWL0AXTIOXi1T2FGt_8-sps8",
+            authDomain: "revision-app-eb82c.firebaseapp.com",
+            projectId: "revision-app-eb82c",
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- IMPORTANT: Load settings.js AFTER the HTML so buttons exist -->
+    <script src="settings.js"></script>
+    <script src="theme-engine.js"></script>
+
+    <!-- Apply dark mode on load -->
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Settings</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="theme.css">
+</head>
+
+<body class="page-settings">
+
+    <!-- Navigation -->
+    <nav class="menu">
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="subjects.html">Subjects</a></li>
+            <li><a href="pomodoro.html">Pomodoro</a></li>
+            <li><a href="pomodoro-settings.html">Pomodoro Settings</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="settings-container">
+        <h1>Pomodoro Settings</h1>
+
+        <!-- WORK TIME -->
+        <section class="settings-section">
+            <h2>Work Duration (minutes)</h2>
+            <input type="number" id="workInput" min="1" max="120">
+        </section>
+
+        <!-- SHORT BREAK -->
+        <section class="settings-section">
+            <h2>Short Break Duration (minutes)</h2>
+            <input type="number" id="shortInput" min="1" max="60">
+        </section>
+
+        <!-- LONG BREAK -->
+        <section class="settings-section">
+            <h2>Long Break Duration (minutes)</h2>
+            <input type="number" id="longInput" min="1" max="60">
+        </section>
+
+        <!-- BACKGROUND COLOUR -->
+        <section class="settings-section">
+            <h2>Pomodoro Background Colour</h2>
+            <input type="color" id="bgColorInput">
+        </section>
+
+        <button id="savePomoSettings">Save Settings</button>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDKCNP1aPfmWL0AXTIOXi1T2FGt_8-sps8",
+            authDomain: "revision-app-eb82c.firebaseapp.com",
+            projectId: "revision-app-eb82c",
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- SETTINGS LOGIC -->
+    <script>
+        // Load saved values into inputs
+        document.getElementById("workInput").value =
+            Number(localStorage.getItem("pomo-work")) || 25;
+
+        document.getElementById("shortInput").value =
+            Number(localStorage.getItem("pomo-short")) || 5;
+
+        document.getElementById("longInput").value =
+            Number(localStorage.getItem("pomo-long")) || 15;
+
+        document.getElementById("bgColorInput").value =
+            localStorage.getItem("pomo-bg") || "#ffffff";
+
+        // Save settings
+        document.getElementById("savePomoSettings").addEventListener("click", () => {
+            const work = Number(document.getElementById("workInput").value);
+            const shortBreak = Number(document.getElementById("shortInput").value);
+            const longBreak = Number(document.getElementById("longInput").value);
+            const bgColor = document.getElementById("bgColorInput").value;
+
+            // Save as numbers
+            localStorage.setItem("pomo-work", work);
+            localStorage.setItem("pomo-short", shortBreak);
+            localStorage.setItem("pomo-long", longBreak);
+            localStorage.setItem("pomo-bg", bgColor);
+
+            alert("Pomodoro settings saved!");
+        });
+    </script>
+
+    <script src="theme-engine.js"></script>
+
+    <!-- Apply dark mode on load -->
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    </script>
+
+</body>
+</html>

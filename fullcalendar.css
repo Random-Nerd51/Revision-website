@@ -1,0 +1,141 @@
+/* Root variables so it adapts to your theme */
+:root {
+  --fc-bg: transparent;
+  --fc-border: rgba(255, 255, 255, 0.15);
+  --fc-text: #ffffff;
+  --fc-muted: rgba(255, 255, 255, 0.5);
+  --fc-today: rgba(35, 29, 96, 0.289);
+  --fc-event-bg: rgba(56, 136, 216, 0.8);
+  --fc-event-bg-hover: rgba(56, 136, 216, 1);
+}
+
+/* If your theme.css sets dark mode on body.dark-mode */
+body.dark-mode {
+  --fc-bg: transparent;
+  --fc-border: rgba(255, 255, 255, 0.15);
+  --fc-text: #ffffff;
+  --fc-muted: rgba(255, 255, 255, 0.5);
+  --fc-today: rgba(255, 255, 255, 0.08);
+  --fc-event-bg: rgba(56, 136, 216, 0.8);
+  --fc-event-bg-hover: rgba(56, 136, 216, 1);
+}
+
+/* Light mode fallback */
+body:not(.dark-mode) {
+  --fc-bg: transparent;
+  --fc-border: rgba(0, 0, 0, 0.15);
+  --fc-text: #000000;
+  --fc-muted: rgba(0, 0, 0, 0.5);
+  --fc-today: rgba(0, 0, 0, 0.05);
+  --fc-event-bg: rgba(56, 136, 216, 0.8);
+  --fc-event-bg-hover: rgba(56, 136, 216, 1);
+}
+
+/* Base */
+.fc {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: var(--fc-text);
+  background: var(--fc-bg);
+}
+
+/* Remove white boxes */
+.fc table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+.fc th,
+.fc td {
+  border: 1px solid var(--fc-border);
+  background: transparent;
+  padding: 0;
+  vertical-align: top;
+  color: var(--fc-text);
+}
+
+/* Toolbar */
+.fc .fc-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: var(--fc-text);
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--fc-text);
+}
+
+.fc .fc-button {
+  background: var(--fc-event-bg);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.fc .fc-button:hover {
+  background: var(--fc-event-bg-hover);
+}
+
+/* Day grid */
+.fc .fc-daygrid-day-frame {
+  min-height: 110px;
+  padding: 4px;
+  background: transparent;
+  position: relative;
+}
+
+.fc .fc-daygrid-day-number {
+  font-weight: bold;
+  padding: 4px;
+  color: var(--fc-text);
+}
+
+/* Today highlight */
+.fc .fc-day-today .fc-daygrid-day-frame {
+  background: var(--fc-today);
+}
+
+/* Other month days */
+.fc .fc-day-other .fc-daygrid-day-frame {
+  opacity: 0.4;
+}
+
+/* Events */
+.fc .fc-daygrid-event {
+  background: var(--fc-event-bg);
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  margin-top: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fc .fc-daygrid-event:hover {
+  background: var(--fc-event-bg-hover);
+}
+
+/* Time grid */
+.fc .fc-timegrid-slot {
+  height: 40px;
+  border-bottom: 1px solid var(--fc-border);
+  background: transparent;
+}
+
+.fc .fc-timegrid-event {
+  background: var(--fc-event-bg);
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 3px;
+  position: absolute;
+  font-size: 0.85em;
+}

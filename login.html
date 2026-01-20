@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="fullcalendar.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision | Login</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="theme.css">
+
+
+
+    <!-- Firebase v8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDKCNP1aPfmWL0AXTIOXi1T2FGt_8-sps8",
+            authDomain: "revision-app-eb82c.firebaseapp.com",
+            projectId: "revision-app-eb82c",
+            storageBucket: "revision-app-eb82c.appspot.com",
+            messagingSenderId: "15736140755",
+            appId: "1:15736140755:web:b24f09c24ba06087183526"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body class="auth-page page-login">
+
+    <!-- Background video (theme-controlled) -->
+    <video autoplay muted loop playsinline id="themeVideo"></video>
+
+    <div class="auth-container">
+        <h1>Log In</h1>
+
+        <input id="email" type="email" placeholder="Email">
+        <input id="password" type="password" placeholder="Password">
+
+        <button id="loginBtn">Log In</button>
+        <p><a href="#" id="forgotPassword">Forgot your password</a></p>
+
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        <button id="guestBtn" class="guest">Continue as Guest</button>
+    </div>
+
+    <script src="login.js"></script>
+
+    <!-- Dark mode -->
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    </script>
+
+    <!-- NEW THEME ENGINE -->
+    <script src="theme-engine.js"></script>
+
+</body>
+</html>

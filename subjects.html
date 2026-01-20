@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Subjects</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="theme.css">
+
+
+</head>
+
+<body class="page-subjects">
+
+    <!-- Background video -->
+    <video autoplay muted loop playsinline id="themeVideo"></video>
+
+    <!-- Navigation menu -->
+    <nav class="menu">
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="pomodoro.html">Pomodoro</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="#" id="logoutBtn">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <div class="subject-container">
+        <h1>Your Subjects</h1>
+
+        <input id="subjectInput" type="text" placeholder="Add a new subject">
+        <button id="addSubjectBtn">Add Subject</button>
+
+        <h2>Subject List</h2>
+        <ul id="subjectList"></ul>
+    </div>
+
+    <!-- Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDKCNP1aPfmWL0AXTIOXi1T2FGt_8-sps8",
+            authDomain: "revision-app-eb82c.firebaseapp.com",
+            projectId: "revision-app-eb82c"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Page logic -->
+    <script src="subjects.js"></script>
+
+    <!-- Dark mode -->
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    </script>
+
+    <!-- NEW THEME ENGINE -->
+    <script src="theme-engine.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision | Home</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="fullcalendar.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="theme.css">
+</head>
+
+<body class="page-home">
+
+    <!-- Background video -->
+    <video autoplay muted loop playsinline id="themeVideo"></video>
+
+    <!-- Menu -->
+    <nav class="menu">
+        <ul>
+            <li><a href="subjects.html">Subjects</a></li>
+            <li><a href="#" id="logoutBtn">Log Out</a></li>
+            <li><a href="pomodoro.html">Pomodoro</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- MASTER PAGE CONTAINER (everything sits under the menu) -->
+    <div class="page-container">
+
+        <!-- CONTENT ROW (desktop flex, mobile stacked) -->
+        <div class="content-row">
+
+            <!-- CALENDAR -->
+            <div class="homepage-calendar-wrapper">
+                <div id="calendar"></div>
+            </div>
+
+            <!-- UPCOMING PANEL -->
+            <div class="upcoming-panel">
+                <div class="upcoming-header">
+                    <h2>Upcoming:</h2>
+                    <select id="upcomingView">
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                </div>
+
+                <ul id="upcomingList"></ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDKCNP1aPfmWL0AXTIOXi1T2FGt_8-sps8",
+            authDomain: "revision-app-eb82c.firebaseapp.com",
+            projectId: "revision-app-eb82c",
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <!-- Your scripts -->
+    <script src="home.js"></script>
+    <script src="homepage-calendar.js"></script>
+    <script src="theme-engine.js"></script>
+
+</body>
+</html>
+

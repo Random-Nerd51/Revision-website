@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="theme.css">
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+</head>
+
+<body class="page-subjectbase">
+
+    <!-- Background video -->
+    <video autoplay muted loop playsinline id="themeVideo"></video>
+
+    <div class="subject-container">
+        <h1 id="subjectTitle">Loading...</h1>
+
+        <!-- TO‑DO LIST SECTION -->
+        <div class="todo-section">
+
+            <div class="todo-header">
+                <h2>To‑Do List</h2>
+
+                <div class="todo-controls">
+                    <select id="sortTodos">
+                        <option value="oldest">Sort: Oldest → Newest</option>
+                        <option value="newest">Sort: Newest → Oldest</option>
+                    </select>
+
+                    <button id="addTodoBtn">Add to List</button>
+                </div>
+            </div>
+
+            <div class="todo-inputs">
+                <input type="text" id="todoText" placeholder="New task...">
+                <input type="date" id="todoDate">
+            </div>
+
+            <ul id="todoList"></ul>
+        </div>
+
+        <!-- SUBJECT CALENDAR -->
+        <div class="subject-calendar-section">
+            <h2>Calendar</h2>
+            <button id="clearSessionsBtn" class="danger-btn">Clear All Revision Sessions</button>
+            <div id="subjectCalendar"></div>
+        </div>
+
+        <p><a href="subjects.html">Back to Subjects</a></p>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDKCNP1aPfmWL0AXTIOXi1T2FGt_8-sps8",
+            authDomain: "revision-app-eb82c.firebaseapp.com",
+            projectId: "revision-app-eb82c",
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <!-- Theme engine FIRST -->
+    <script src="theme-engine.js"></script>
+
+    <!-- Subject logic LAST (so eventClick works) -->
+    <script src="subjectbase.js"></script>
+
+    <!-- Apply dark mode AFTER everything -->
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    </script>
+
+</body>
+</html>

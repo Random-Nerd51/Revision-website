@@ -1,0 +1,969 @@
+/* --------------------------------------------------
+   GLOBAL FONT + BASE SETUP
+-------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Overlock:wght@300;400;600&display=swap');
+
+* {
+    font-family: "Overlock", sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-size: 16px; /* controlled by settings slider */
+
+    /* Light mode */
+    --bg-color: #f5f7fa;
+    --text-color: #0a1a2f;
+
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --card-border: #d4dce8;
+
+    --input-bg: #ffffff;
+    --input-border: #d4dce8;
+    --input-text: #0a1a2f;
+
+    --button-bg: #265990;
+    --button-bg-hover: #1d446e;
+    --button-text: #ffffff;
+
+    --slider-track: #d4dce8;
+    --slider-thumb: #265990;
+
+    --menu-bg: rgba(255, 255, 255, 0.75);
+    --menu-border: #d4dce8;
+}
+
+.dark-mode {
+    /* Dark mode */
+    --bg-color: #05070b;
+    --text-color: #e6f1ff;
+
+    --card-bg: #101623;
+    --card-border: rgba(255, 255, 255, 0.16);
+
+    --input-bg: #151c2b;
+    --input-border: rgba(255, 255, 255, 0.18);
+    --input-text: #e6f1ff;
+
+    --button-bg: #265990;
+    --button-bg-hover: #1d446e;
+    --button-text: #ffffff;
+
+    --slider-track: rgba(255, 255, 255, 0.18);
+    --slider-thumb: #265990;
+
+    --menu-bg: #0b1018;
+    --menu-border: rgba(255, 255, 255, 0.12);
+}
+
+/* --------------------------------------------------
+   GLOBAL PAGE STYLING
+-------------------------------------------------- */
+
+body {
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY (FULLY SCALING)
+-------------------------------------------------- */
+
+body, p, input, button, select, textarea, label, a, li {
+    font-size: var(--font-size);
+}
+
+h1 {
+    font-size: calc(var(--font-size) * 2.2);
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+h2 {
+    font-size: calc(var(--font-size) * 1.6);
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+h3 {
+    font-size: calc(var(--font-size) * 1.3);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* --------------------------------------------------
+   NAVIGATION MENU
+-------------------------------------------------- */
+
+.menu {
+    width: 100%;
+    background: var(--menu-bg);
+    border-bottom: 1px solid var(--menu-border);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: calc(var(--font-size) * 1.1);
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    opacity: 0.7;
+}
+
+/* --------------------------------------------------
+   GLOBAL CARDS (AUTH, SUBJECTS, SETTINGS)
+-------------------------------------------------- */
+/* Settings container is wider */
+.settings-container {
+    width: 500px;
+}
+
+/* --------------------------------------------------
+   INPUTS + SELECTS + TEXTAREAS
+-------------------------------------------------- */
+
+input,
+textarea,
+select {
+    background: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--input-text);
+    opacity: 0.7;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+
+button,
+input[type="submit"] {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: calc(var(--font-size) * 1.1);
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: var(--button-bg-hover);
+}
+
+button.danger {
+    background: #ae1818;
+}
+
+button.danger:hover {
+    background: #3e0d0d;
+}
+
+.pomodoro-container button {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid var(--card-border);
+}
+
+/* --------------------------------------------------
+   SLIDERS
+-------------------------------------------------- */
+
+input[type="range"] {
+    width: 100%;
+    background: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--slider-track);
+    height: 6px;
+    border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background: var(--slider-thumb);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    appearance: none;
+}
+
+/* --------------------------------------------------
+   TOGGLE SWITCH
+-------------------------------------------------- */
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--slider-track);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background: var(--slider-thumb);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* --------------------------------------------------
+   SETTINGS PAGE
+-------------------------------------------------- */
+
+.settings-section {
+    margin: 30px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--input-border);
+}
+
+/* --------------------------------------------------
+   SUBJECT LIST
+-------------------------------------------------- */
+
+#subjectList li {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size);
+}
+
+/* --------------------------------------------------
+   PASSWORD MODAL
+-------------------------------------------------- */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 30px;
+    border-radius: 16px;
+    width: 350px;
+    text-align: center;
+}
+
+/* --------------------------------------------------
+   POMODORO TIMER
+-------------------------------------------------- */
+
+.pomodoro-container {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 30px;
+    border-radius: 16px;
+    width: 400px;
+    margin: 150px auto;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+#timerDisplay {
+    font-size: calc(var(--font-size) * 3);
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.controls button,
+.mode-buttons button {
+    margin: 5px;
+}
+
+.weekly-focus {
+    font-size: calc(var(--font-size) * 1.2);
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.page-subjectbase .subject-container {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.todo-section {
+    width: 100%;
+    margin: 20px auto;
+    padding: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.todo-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-inputs input {
+    flex: 1;
+    padding: 14px;
+    font-size: calc(var(--font-size) * 1.1);
+}
+
+.todo-section button,
+.todo-section select {
+    background: white;
+    color: black;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.todo-section button:hover,
+.todo-section select:hover {
+    background: #f2f2f2;
+}
+
+#todoList {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: calc(var(--font-size) * 1.1);
+}
+
+.todo-item.done {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.calendar-placeholder {
+    width: 100%;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    opacity: 0.6;
+    border: 1px dashed var(--card-border);
+    border-radius: 12px;
+}
+
+
+
+.upcoming-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.upcoming-header select {
+    padding: 10px 14px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+}
+
+#upcomingList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#upcomingList li {
+    margin-bottom: 14px;
+    padding: 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Make sure the calendar fits inside */
+#calendar {
+    width: 100%;
+}
+
+/* ---------------------------
+   LOGIN PAGE LAYOUT
+--------------------------- */
+
+.page-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 2; /* keeps content above video */
+}
+
+/* Background video stays behind everything */
+#themeVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Login box */
+.auth-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 30px 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Inputs */
+.auth-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Buttons */
+.auth-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Guest button styling */
+.auth-container .guest {
+    background: #444;
+    color: white;
+}
+
+/* Links */
+.auth-container a {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* ---------------------------
+   DARK MODE
+--------------------------- */
+
+.dark-mode .auth-container {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #444;
+}
+
+.dark-mode .auth-container input {
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-mode .auth-container button {
+    background: #333;
+    color: #fff;
+}
+
+.dark-mode .auth-container a {
+    color: #ddd;
+}
+
+/* ---------------------------
+   MOBILE LAYOUT
+--------------------------- */
+
+@media (max-width: 600px) {
+    .auth-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .auth-container input,
+    .auth-container button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* ---------------------------
+   POMODORO SETTINGS PAGE
+--------------------------- */
+
+.page-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.settings-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 30px 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 40px;
+}
+
+.settings-section {
+    margin-bottom: 25px;
+}
+
+.settings-section input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+#savePomoSettings {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: #444;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* ---------------------------
+   DARK MODE
+--------------------------- */
+
+.dark-mode .settings-container {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #444;
+}
+
+.dark-mode .settings-section input {
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-mode #savePomoSettings {
+    background: #333;
+    color: #fff;
+}
+
+/* ---------------------------
+   TABLET
+--------------------------- */
+
+@media (max-width: 900px) {
+    .settings-container {
+        max-width: 90%;
+        padding: 25px;
+    }
+}
+
+/* ---------------------------
+   MOBILE
+--------------------------- */
+
+@media (max-width: 600px) {
+    .settings-container {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .settings-section input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #savePomoSettings {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+/* ---------------------------
+   POMODORO TIMER PAGE
+--------------------------- */
+
+.page-pomodoro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Pomodoro box */
+.pomodoro-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 30px 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Timer display */
+#timerDisplay {
+    font-size: 64px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Weekly focus */
+.weekly-focus {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background: #444;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Mode buttons */
+.mode-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mode-buttons button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+}
+
+.mode-buttons .active {
+    background: #444;
+    color: white;
+}
+
+/* ---------------------------
+   DARK MODE
+--------------------------- */
+
+.dark-mode .pomodoro-container {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #444;
+}
+
+.dark-mode .controls button {
+    background: #333;
+    color: #fff;
+}
+
+.dark-mode .mode-buttons button {
+    background: #222;
+    color: #ccc;
+}
+
+.dark-mode .mode-buttons .active {
+    background: #555;
+    color: #fff;
+}
+
+/* ---------------------------
+   TABLET
+--------------------------- */
+
+@media (max-width: 900px) {
+    .pomodoro-container {
+        transform: scale(0.9);
+        transform-origin: top center;
+        max-width: 90%;
+    }
+
+    #timerDisplay {
+        font-size: 52px;
+    }
+}
+
+/* ---------------------------
+   MOBILE
+--------------------------- */
+
+@media (max-width: 600px) {
+    .pomodoro-container {
+        transform: scale(0.8);
+        transform-origin: top center;
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    #timerDisplay {
+        font-size: 42px;
+    }
+
+    .controls button,
+    .mode-buttons button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+/* ---------------------------
+   MENU BAR (GLOBAL FIX)
+--------------------------- */
+
+nav.menu {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    padding: 10px 20px;
+}
+
+nav.menu ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav.menu a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Dark mode */
+.dark-mode nav.menu a {
+    color: #f0f0f0;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    nav.menu ul {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    nav.menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav.menu a {
+        font-size: 16px;
+    }
+}
+
+/* ---------------------------
+   PAGE LAYOUT (REWRITTEN)
+--------------------------- */
+
+/* Master container under menu */
+.page-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 80px; /* pushes content below menu */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+/* Desktop: calendar + tasks side by side */
+.content-row {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+/* Calendar */
+.homepage-calendar-wrapper {
+    flex: 1 1 50%;
+    min-width: 0;
+}
+
+/* Tasks */
+.upcoming-panel {
+    flex: 1 1 50%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    padding: 16px;
+    color: white;
+}
+
+/* Task list fills panel */
+.upcoming-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+#upcomingList {
+    flex: 1;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Tablet + Mobile: stack vertically */
+@media (max-width: 1400px) {
+    .content-row {
+        flex-direction: column;
+    }
+
+    .homepage-calendar-wrapper,
+    .upcoming-panel {
+        width: 100%;
+        flex: none;
+    }
+}
+
+.danger-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.danger-btn:hover {
+    background: #c9302c;
+}

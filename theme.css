@@ -1,0 +1,303 @@
+/* ============================================================
+   VIDEO RULES
+   ============================================================ */
+
+#themeVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.theme-default #themeVideo {
+    display: none;
+}
+
+/* ============================================================
+   GLOBAL LIGHT MODE (APPLIES TO ALL THEMES)
+   ============================================================ */
+
+body:not(.dark-mode) {
+    background: #f5f7fa;
+    color: #0a1a2f;
+}
+
+/* Light mode containers */
+body:not(.dark-mode) .subject-container,
+body:not(.dark-mode) .auth-container,
+body:not(.dark-mode) .settings-section {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid #d4dce8;
+    backdrop-filter: blur(10px);
+}
+
+/* Light mode inputs */
+body:not(.dark-mode) input,
+body:not(.dark-mode) textarea {
+    background: #ffffff;
+    color: #0a1a2f;
+    border: 1px solid #d4dce8;
+}
+
+/* Light mode buttons */
+body:not(.dark-mode) button {
+    background: #265990;
+    color: white;
+}
+
+/* Light mode menu */
+body:not(.dark-mode) .menu {
+    background: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid #d4dce8;
+    backdrop-filter: blur(10px);
+}
+
+body:not(.dark-mode) .menu a {
+    color: #0a1a2f;
+}
+
+/* Light mode toggles */
+body:not(.dark-mode) .slider {
+    background: #d4dce8;
+}
+
+body:not(.dark-mode) input:checked + .slider {
+    background: #265990;
+}
+
+/* ============================================================
+   GLOBAL DARK MODE (APPLIES TO ALL THEMES)
+   ============================================================ */
+
+body.dark-mode {
+    background: #05070b;
+    color: #e6f1ff;
+}
+
+/* Dark mode containers */
+body.dark-mode .subject-container,
+body.dark-mode .auth-container,
+body.dark-mode .settings-section {
+    background: #101623;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* Dark mode inputs */
+body.dark-mode input,
+body.dark-mode textarea {
+    background: #151c2b;
+    color: #e6f1ff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Dark mode buttons */
+body.dark-mode button {
+    background: #265990;
+    color: white;
+}
+
+/* Dark mode menu */
+body.dark-mode .menu {
+    background: #0b1018;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .menu a {
+    color: #e6f1ff;
+}
+
+/* Dark mode toggles */
+body.dark-mode .slider {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+body.dark-mode input:checked + .slider {
+    background: #265990;
+}
+
+/* FullCalendar dark mode */
+.dark-mode .fc {
+    background: #1a1a1a;
+    color: #f0f0f0;
+}
+
+.dark-mode .fc-daygrid-day {
+    background: #1a1a1a;
+}
+
+.dark-mode .fc-daygrid-day-number {
+    color: #f0f0f0;
+}
+
+.dark-mode .fc-col-header-cell {
+    background: #222;
+    color: #fff;
+}
+
+.dark-mode .fc-scrollgrid {
+    border-color: #333;
+}
+
+.dark-mode .fc-daygrid-day-frame {
+    border-color: #333;
+}
+
+.dark-mode .upcoming-panel {
+    background: #222;
+    color: #fff;
+}
+
+.dark-mode .upcoming-item span {
+    color: #fff;
+}
+
+/* Mobile + tablet layout */
+@media (max-width: 900px) {
+    .page-home {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .homepage-calendar-wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .upcoming-panel {
+        width: 100%;
+    }
+}
+
+/* Small phones */
+@media (max-width: 500px) {
+    #calendar {
+        font-size: 12px;
+    }
+
+    .upcoming-item span {
+        font-size: 14px;
+    }
+}
+
+/* Dark mode: FullCalendar grid + text only */
+.dark-mode .fc {
+    color: #f0f0f0;
+}
+
+.dark-mode .fc-daygrid-day,
+.dark-mode .fc-scrollgrid,
+.dark-mode .fc-daygrid-day-frame {
+    background: transparent;      /* keep your page background visible */
+    border-color: #444;           /* darker grid lines */
+}
+
+.dark-mode .fc-col-header-cell {
+    background: transparent;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+.dark-mode .fc-daygrid-day-number {
+    color: #e0e0e0;
+}
+
+.dark-mode .fc-event {
+    background: #333;
+    border: none;
+    color: #fff;
+}
+
+/* ---------------------------
+   GLOBAL DARK MODE
+--------------------------- */
+.dark-mode {
+    color: #f0f0f0;
+}
+
+/* Background stays transparent (your video shows through) */
+.dark-mode body {
+    background: transparent;
+}
+
+/* ---------------------------
+   BUTTONS
+--------------------------- */
+.dark-mode button,
+.dark-mode .btn {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-mode button:hover,
+.dark-mode .btn:hover {
+    background: #444;
+}
+
+/* ---------------------------
+   INPUTS + TEXTBOXES
+--------------------------- */
+.dark-mode input,
+.dark-mode textarea {
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-mode input::placeholder {
+    color: #aaa;
+}
+
+/* ---------------------------
+   DROPDOWNS
+--------------------------- */
+.dark-mode select {
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+/* ---------------------------
+   PANELS (Upcoming tasks, subject lists, etc.)
+--------------------------- */
+.dark-mode .upcoming-panel,
+.dark-mode .subject-card,
+.dark-mode .todo-item {
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    border: 1px solid #444;
+}
+
+/* ---------------------------
+   FULLCALENDAR (grid + text only)
+--------------------------- */
+.dark-mode .fc {
+    color: #f0f0f0;
+}
+
+.dark-mode .fc-daygrid-day,
+.dark-mode .fc-scrollgrid,
+.dark-mode .fc-daygrid-day-frame {
+    background: transparent;
+    border-color: #444;
+}
+
+.dark-mode .fc-col-header-cell {
+    background: transparent;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+.dark-mode .fc-daygrid-day-number {
+    color: #e0e0e0;
+}
+
+.dark-mode .fc-event {
+    background: #333;
+    color: #fff;
+    border: none;
+}
